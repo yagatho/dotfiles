@@ -1,0 +1,45 @@
+window {
+    font-family: "Fira Code";
+    font-weight: bold;
+    margin: 5px;
+    background-color: transparent;
+}
+
+#input {
+    margin: 5px;
+    background-color: transparent;
+    color: white;
+    border-radius: 10px;
+}
+
+#inner-box {
+    margin: 5px;
+    background-color: transparent;
+}
+
+#outer-box {
+    margin: 5px;
+    background-color: rgba(1,1,1,0.5);
+}
+
+#scroll {
+    margin: 5px;
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+
+#entry:selected{
+    background: #af4154;
+}
+
+
+#text {
+    margin: 5px;
+    color: white;
+}
+
+#text:selected {
+    margin: 5px;
+    color: black;
+}

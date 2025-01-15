@@ -1,0 +1,27 @@
+{
+  "wallpaper": "/home/yagatho/Documents/Wallpaper/WP.jpg",
+  "alpha": "100",
+  "special": {
+    "background": "#1c1a1a",
+    "foreground": "#c4c2b9",
+    "cursor": "#c4c2b9"
+  },
+  "colors": {
+    "color0": "#1c1a1a",
+    "color1": "#E88619",
+    "color2": "#A88B76",
+    "color3": "#D6A170",
+    "color4": "#FCCF7C",
+    "color5": "#4E7786",
+    "color6": "#718685",
+    "color7": "#c4c2b9",
+    "color8": "#898781",
+    "color9": "#E88619",
+    "color10": "#A88B76",
+    "color11": "#D6A170",
+    "color12": "#FCCF7C",
+    "color13": "#4E7786",
+    "color14": "#718685",
+    "color15": "#c4c2b9"
+  }
+}
