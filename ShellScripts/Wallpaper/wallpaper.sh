@@ -42,7 +42,6 @@ wal -i "$WALLPAPER_PATH"
 cp "/home/yagatho/.cache/hellwal/colors.json" "/home/yagatho/.cache/wal"
 
 #CHANGE DISCORD THEME
-themecord
 pywalfox update
 
 #RELOAD WAYBAR
