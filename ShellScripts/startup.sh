@@ -1,13 +1,8 @@
 #!/usr/bin/env bash
+~/DotFiles/ShellScripts/Wallpaper/swww.sh init
 
 #APPS
-code &
-wait $!
-
-vesktop &
-sleep 1
-
-firefox &
+discord &
 sleep 1
 
 #ALL KITTIES
@@ -16,4 +11,3 @@ sleep 1
 
 #WALLPAPER AND WAYBAR
 ~/DotFiles/ShellScripts/waybarLaunch.sh init
-~/DotFiles/ShellScripts/Wallpaper/swww.sh init

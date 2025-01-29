@@ -1,237 +1,204 @@
 @import '/home/yagatho/.cache/hellwal/colors-waybar.css';
-
-
 * {
-	border: none;
-	font-family: "Fira Code", "Font Awesome 6 Free", "Font Awesome 6 Brands";
-	font-weight: normal;
-	min-height: 5px;
-	min-width: 1px;
+	font-size: 15px;
+	font-family: "CodeNewRoman Nerd Font Propo";
 }
 
 window#waybar {
-	background: rgba(0,0,0,255);
+	all: unset;
 }
 
-
-
-/* WIDGETS */
-
-#memory,
-#disk,
-#cpu,
-#custom-launcher,
-#clock,
-#battery,
-#pulseaudio,
-#network,
-#mpris
-{
-	margin-left: 8px;
-	padding-left: 10px;
-	margin-bottom: 0px;
-	padding-right: 10px;
-	border-radius: 4px;
-	transition: none;
-
-	background: transparent;
-	color: @foreground;
+.modules-left {
+	padding: 7px;
+	margin: 5px;
+	border-radius: 10px;
+	background: alpha(@background, .5);
+	box-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
 }
 
-#pulseaudio
-{
-	margin-left: 8px;
-	padding-left: 10px;
-	margin-bottom: 0px;
-	padding-right: 10px;
-	border-radius: 4px;
-	transition: none;
-
-	background: transparent;
-	color: @foreground;
+.modules-center {
+	padding: 7px;
+	margin: 5px;
+	border-radius: 10px;
+	background: alpha(@background, .5);
+	box-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
 }
 
-#pulseaudio.muted
-{
-	margin-left: 8px;
-	padding-left: 10px;
-	margin-bottom: 0px;
-	padding-right: 10px;
-	border-radius: 4px;
-	transition: none;
-
-	background: transparent;
-	color: #c0392b;
+.modules-right {
+	padding: 7px;
+	margin: 5px;
+	border-radius: 10px;
+	background: alpha(@background, .5);
+	box-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
 }
 
-#pulseaudio.source-muted{
-	margin-left: 8px;
-	padding-left: 10px;
-	margin-bottom: 0px;
-	padding-right: 10px;
-	border-radius: 4px;
-	transition: none;
-
-	background: transparent;
-	border: #c0392b 3px solid;
+tooltip {
+	background: @background;
+	color: @color7;
 }
 
-#tray
-{
-	margin-left: 8px;
-	padding-left: 10px;
-	margin-bottom: 0px;
-	padding-right: 10px;
-	border-radius: 4px;
-	transition: none;
-	border: solid 3px @foreground;
+#clock:hover,
+#custom-pacman:hover,
+#custom-notification:hover,
+#bluetooth:hover,
+#network:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover {
+	transition: all .3s ease;
+	color: @color9;
 }
 
-/* HYPR WORKSPACES */
+#custom-notification {
+	padding: 0px 5px;
+	transition: all .3s ease;
+	color: @color7;
+}
+
+#clock {
+	padding: 0px 5px;
+	color: @color7;
+	transition: all .3s ease;
+}
+
+#custom-pacman {
+	padding: 0px 5px;
+	transition: all .3s ease;
+	color: @color7;
+
+}
+
 #workspaces {
-	margin-left: 8px;
-
-	padding-left: 10px;
-	padding-right: 10px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-
-	border-radius: 4px;
-
-	background: @color6;
+	padding: 0px 5px;
 }
 
-
-/* WORKSPACE BUTTONS */
 #workspaces button {
-	font-size: 0pt;
-	border-radius: 90px;
-	
-	margin-right: 2px;
-	margin-left: 2px;
-
-	background: @color7;
-}
-
-#workspaces button.active {
-	background: @color8;
-	min-width: 13px;
+	all: unset;
+	padding: 0px 5px;
+	color: alpha(@color9, .4);
+	transition: all .2s ease;
 }
 
 #workspaces button:hover {
-	background: @color9;
-	box-shadow: none;
+	color: rgba(0, 0, 0, 0);
+	border: none;
+	text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+	transition: all 1s ease;
 }
 
-/* BATERRY */
-#battery.high{
-	color: #2ecc71;
-}
-#battery.mid{
-	color: #f1c40f;
-}
-#battery.warning{
-	color: #e67e22;
-}
-#battery.critical{
-	color: #c0392b;
-	border: 3px solid #c0392b;
-	border-image: linear-gradient(90deg, #c0392b 0%, #d35400  100%) 1;
-	animation: borderCritical 5s infinite;
-	animation: colorCritical 1s infinite;
-}
-#battery.charging{
-	color: #3498db;
-	border: 3px solid #3498db;
-	border-image: linear-gradient(90deg, #3acfd5 0%, #3a4ed5 100%) 1;
-	animation: borderCharging 5s infinite;
+#workspaces button.active {
+	color: @color9;
+	border: none;
+	text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
 }
 
-/* BACKLIGHT SLIDER */
-#backlight-slider slider {
-    background-image: none;
-	background-color: @color8;
-    border: none;
-    box-shadow: none;
+#workspaces button.empty {
+	color: rgba(0, 0, 0, 0);
+	border: none;
+	text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
 }
 
-#backlight-slider slider:hover {
-    background-image: none;
-	background-color: @color9;
-    border: none;
-    box-shadow: none;
+#workspaces button.empty:hover {
+	color: rgba(0, 0, 0, 0);
+	border: none;
+	text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+	transition: all 1s ease;
 }
 
-#backlight-slider trough {
-    min-width: 80px;
-    border-radius: 5px;
-    background-color: @color9;
+#workspaces button.empty.active {
+	color: @color9;
+	border: none;
+	text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
 }
 
-#backlight-slider highlight {
-    min-width: 0px;
-    border-radius: 5px;
-    background-color: @foreground;
+#bluetooth {
+	padding: 0px 5px;
+	transition: all .3s ease;
+	color: @color7;
+
 }
 
-/* BLUETOOTH */
-#bluetooth.on{
-	color: #3498db;
-	text-shadow: 0 0 2px #2980b9, 0 0 2px #2980b9, 0 0 3px #2980b9;
+#network {
+	padding: 0px 5px;
+	transition: all .3s ease;
+	color: @color7;
 
-	padding-left: 4px;
-	padding-right: 4px;
-	border-radius: 25px;
 }
 
-#bluetooth.discovering{
-	color: #2ecc71;
+#battery {
+	padding: 0px 5px;
+	transition: all .3s ease;
+	color: @color7;
 
-	padding-left: 4px;
-	padding-right: 4px;
-	border-radius: 25px;
+
 }
 
-#bluetooth.connected{
-	color: @foreground;
-
-	padding-left: 4px;
-	padding-right: 4px;
-	border-radius: 25px;
+#battery.charging {
+	color: #26A65B;
 }
 
-/* POWER PROFILES */
-#power-profiles-daemon.performance{
-	color: #f1c40f;
-	text-shadow: 0 0 2px #f1c40f, 0 0 5px #f1c40f;
+#battery.warning:not(.charging) {
+	color: #ffbe61;
 }
 
-#power-profiles-daemon.power-saver{
-	color: #2ecc71;
-	text-shadow: 0 0 2px #2ecc71, 0 0 5px #2ecc71;
+#battery.critical:not(.charging) {
+	color: #f53c3c;
+	animation-name: blink;
+	animation-duration: 0.5s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
 }
 
-#power-profiles-daemon.balanced{
-	color: @foreground;
-	text-shadow: 0 0 2px #34495e, 0 0 5px #34495e;
+#group-expand {
+	padding: 0px 5px;
+	transition: all .3s ease;
 }
 
-
-/* ANIMATIONS */
-@keyframes borderCharging {
-	from {border-image: linear-gradient(0deg, #3acfd5 0%, #3a4ed5 100%) 1;}
-
-	to {border-image: linear-gradient(360deg, #3acfd5 0%, #3a4ed5 100%) 1;}
+#custom-expand {
+	padding: 0px 5px;
+	color: alpha(@foreground, .2);
+	text-shadow: 0px 0px 2px rgba(0, 0, 0, .7);
+	transition: all .3s ease;
 }
 
-@keyframes borderCritical {
-	from {border-image: linear-gradient(0deg, #c0392b 0%, #d35400 100%) 1;}
-
-	to {border-image: linear-gradient(360deg, #c0392b 0%, #d35400 100%) 1;}
+#custom-expand:hover {
+	color: rgba(255, 255, 255, .2);
+	text-shadow: 0px 0px 2px rgba(255, 255, 255, .5);
 }
 
-@keyframes colorCritical {
-	from {color: #c0392b;}
+#custom-colorpicker {
+	padding: 0px 5px;
+}
 
-	to {color: #d35400;}
+#cpu,
+#memory,
+#temperature {
+	padding: 0px 5px;
+	transition: all .3s ease;
+	color: @color7;
+
+}
+
+#custom-endpoint {
+	color: transparent;
+	text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 1);
+
+}
+
+#tray {
+	padding: 0px 5px;
+	transition: all .3s ease;
+
+}
+
+#tray menu * {
+	padding: 0px 5px;
+	transition: all .3s ease;
+}
+
+#tray menu separator {
+	padding: 0px 5px;
+	transition: all .3s ease;
 }

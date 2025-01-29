@@ -1,48 +1,72 @@
 #!/usr/bin/env bash
 
-
 LOCK_FILE="/tmp/wallpaper_change.lock"
 
-# CHECK IF LOCK FILE EXISTS
+# Ensure lock file is removed on script exit
+trap 'rm -f "$LOCK_FILE"' EXIT
+
+# Check if lock file exists
 if [[ -f "$LOCK_FILE" ]]; then
     echo "Zmiana tapety już trwa, anulowano."
     exit 1
 fi
 
-
+# Create lock file
 touch "$LOCK_FILE"
 
+# Find new and old wallpapers
+NEW_WALLPAPER=$(find "$HOME/Wallpaper" -type f \( -iname "*.jpg" -o -iname "*.png" \) | shuf -n 1)
+OLD_WALLPAPER=$(find "$HOME/Wallpaper/Current" -type f \( -iname "*.jpg" -o -iname "*.png" \) | head -n 1)
 
-NEW_WALLPAPER=$(find "$HOME/Wallpaper" -type f | shuf -n 1)
-OLD_WALLPAPER=$(find "$HOME/Wallpaper/Current" -type f | head -n 1)
+# Ensure Current directory exists
+mkdir -p "$HOME/Wallpaper/Current"
 
+# Move new wallpaper to Current directory
+if ! mv "$NEW_WALLPAPER" "$HOME/Wallpaper/Current"; then
+    echo "Failed to move new wallpaper to Current directory."
+    exit 1
+fi
 
-#COPY THE NEW WALLPAPER TO THE CURRENT
-mv "$NEW_WALLPAPER" "$HOME/Wallpaper/Current"
-
-#CHECK IF CURRENT FOLDER IS EMPTY
+# Move old wallpaper back to Wallpaper directory
 if [[ -n "$OLD_WALLPAPER" ]]; then
-    mv "$OLD_WALLPAPER" "$HOME/Wallpaper"
+    if ! mv "$OLD_WALLPAPER" "$HOME/Wallpaper"; then
+        echo "Failed to move old wallpaper back to Wallpaper directory."
+        exit 1
+    fi
 else
     echo "Brak tapety w katalogu Current."
 fi
 
-#GET PATH AND CHANGE TO NEW WALLPAPER
-WALLPAPER_PATH="$(find "$HOME/Wallpaper/Current" -type f | head -n 1)"
+# Get path of the new wallpaper
+WALLPAPER_PATH="$(find "$HOME/Wallpaper/Current" -type f \( -iname "*.jpg" -o -iname "*.png" \) | head -n 1)"
 echo "New wallpaper = $WALLPAPER_PATH"
-swww img "$WALLPAPER_PATH" --transition-type=outer
 
-#REMOVE LOCK FILE
-rm -f "$LOCK_FILE"
+# Set new wallpaper
+if [[ -f "$WALLPAPER_PATH" ]]; then
+    swww img "$WALLPAPER_PATH" --transition-type=outer
+else
+    echo "Invalid wallpaper path: $WALLPAPER_PATH"
+    exit 1
+fi
 
-#GENERETE NEW COLOR SCHEME
-hellwal -i "$WALLPAPER_PATH"
-wal -i "$WALLPAPER_PATH"
+# Generate color schemes
+if ! hellwal -i "$WALLPAPER_PATH"; then
+    echo "Failed to generate hellwal color scheme."
+    exit 1
+fi
+if ! wal -i "$WALLPAPER_PATH"; then
+    echo "Failed to generate wal color scheme."
+    exit 1
+fi
 
+# Copy hellwal colors to wal cache
 cp "/home/yagatho/.cache/hellwal/colors.json" "/home/yagatho/.cache/wal"
 
-#CHANGE DISCORD THEME
-pywalfox update
+# Update Discord theme
+if ! pywalfox update; then
+    echo "Failed to update Discord theme."
+    exit 1
+fi
 
-#RELOAD WAYBAR
-~/DotFiles/ShellScripts/waybarLaunch.sh
+# Remove lock file
+rm -f "$LOCK_FILE"
