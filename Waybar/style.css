@@ -1,4 +1,5 @@
 @import '/home/yagatho/.cache/hellwal/colors-waybar.css';
+
 * {
 	font-size: 15px;
 	font-family: "CodeNewRoman Nerd Font Propo";
@@ -170,6 +171,15 @@ tooltip {
 
 #custom-colorpicker {
 	padding: 0px 5px;
+}
+
+
+#custom-git {
+	color: #3B3B98;
+}
+
+#custom-git:hover {
+	color: @color9;
 }
 
 #cpu,
