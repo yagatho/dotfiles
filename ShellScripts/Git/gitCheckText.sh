@@ -4,8 +4,6 @@
 FOLDERS=($(find ~/Git -maxdepth 1 -type d))
 
 #Search through all the folders
-TOTAL=0
-TOTAL_UP=0
 for DIR in "${FOLDERS[@]}"; do
 
     #Check if folder is git repo
@@ -15,23 +13,21 @@ for DIR in "${FOLDERS[@]}"; do
 
     NAME=$DIR
     cd $DIR
-    git remote update> /dev/null 2>&1
+    git remote update
 
     STATUS=$(git status -uno)
+    TOTAL=0
 
     # OUT
     if [[ $STATUS == *"behind"* ]]; then
         VALUE=${STATUS#*"by"}
         VALUE=${VALUE%"commit,"*}
         TOTAL=$((TOTAL+1))
-    fi
 
-    MODIFIED=$(git status --porcelain)
-
-    # OUT MODIFIED
-    if [[ -n $MODIFIED ]]; then
-        ((TOTAL_UP++))
+        echo "Behind on $NAME! $((VALUE)) commit behind"
+    else
+        echo "Up to date on $NAME!"
     fi
 done
 
-echo "<span color='#FC427B'>$TOTAL </span> <span color='#55E6C1'>$TOTAL_UP </span>"
+echo "Total behind: $TOTAL"
