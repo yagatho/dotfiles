@@ -13,6 +13,11 @@ for DIR in "${FOLDERS[@]}"; do
         continue
     fi
 
+    #Check if folder is syncable
+    if [ ! -d "$DIR/.git" ]; then
+        continue
+    fi
+
     NAME=$DIR
     cd $DIR
     git remote update> /dev/null 2>&1

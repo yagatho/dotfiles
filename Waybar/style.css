@@ -192,7 +192,7 @@ tooltip {
 }
 
 #custom-git:hover {
-	color: @color9;
+	background-color: black;
 }
 
 #cpu,
