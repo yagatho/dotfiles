@@ -47,4 +47,4 @@ for DIR in "${FOLDERS[@]}"; do
     fi
 done
 
-echo "{\"text\": \"<span color='#FC427B'>$TOTAL </span> <span color='#55E6C1'>$TOTAL_UP </span>\", \"tooltip\": \"$TOOLTIP\"}"
+echo "{\"text\": \"<span color='#FC427B'>$TOTAL </span>  <span color='#55E6C1'>$TOTAL_UP </span>\", \"tooltip\": \"$TOOLTIP\"}"

@@ -3,7 +3,7 @@
 
 #APPS
 discord &
-easyeffects &
+lutris &
 sleep 1
 
 #ALL KITTIES
