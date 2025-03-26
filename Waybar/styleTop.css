@@ -14,7 +14,7 @@
 /* Whole bar */
 window#waybar {
 	all: unset;
-	background-color: @background;
+	background-color: transparent;
 }
 
 
