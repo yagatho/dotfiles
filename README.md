@@ -4,9 +4,9 @@ My personal dotfiles for use with Arch Hyprland
 
 ### Plans
 ---
-[ ] Custom widget manager written in bash. 
-    [ ] Simple window tiling rules. 
-[ ] GTK Themes.
-[ ] Github widget extension. 
-[ ] New icons for waybar.
-[ ] Extensible menu for new icons. 
+1. [ ] Custom widget manager written in bash. 
+2. [ ] Simple window tiling rules. 
+3. [ ] GTK Themes.
+4. [ ] Github widget extension. 
+5. [ ] New icons for waybar.
+6. [ ] Extensible menu for new icons. 
