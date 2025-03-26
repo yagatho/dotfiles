@@ -1,8 +1,8 @@
-#### MY DOTFILES
+# MY DOTFILES
 ---
 My personal dotfiles for use with Arch Hyprland
 
-### Plans
+## Plans
 ---
 1. [ ] Custom widget manager written in bash. 
 2. [ ] Simple window tiling rules. 
