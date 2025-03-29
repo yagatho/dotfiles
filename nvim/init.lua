@@ -71,9 +71,6 @@ vim.opt.scrolloff = 20
 -- Clear highlights
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
--- Diagnostic keymaps
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
-
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
@@ -84,10 +81,10 @@ vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+vim.keymap.set("n", "<C-j>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-k>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<C-h>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-l>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- [[ Basic Autocommands ]]
 -- Highlight when yanking (copying) text
@@ -759,7 +756,6 @@ require("lazy").setup({
 	-- require 'kickstart.plugins.indent_line',
 	-- require 'kickstart.plugins.lint',
 	-- require 'kickstart.plugins.autopairs',
-	require("kickstart.plugins.neo-tree"),
 	-- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
 	-- [[ My plugins ]]
@@ -796,7 +792,6 @@ require("lazy").setup({
 			local user = vim.env.USER or "User"
 			user = user:sub(1, 1):upper() .. user:sub(2)
 			return {
-				auto_insert_mode = true,
 				question_header = "  " .. user .. " ",
 				answer_header = "  Copilot ",
 				window = {
@@ -845,6 +840,12 @@ require("lazy").setup({
 				desc = "Prompt Actions (CopilotChat)",
 				mode = { "n", "v" },
 			},
+			{
+				"<leader>ad",
+				"<cmd>CopilotChatDocs<cr>",
+				desc = "Docs (CopilotChat)",
+				mode = { "n", "v" },
+			},
 		},
 		config = function(_, opts)
 			local chat = require("CopilotChat")
@@ -878,33 +879,8 @@ require("lazy").setup({
 		keys = {
 			{
 				"<leader>xx",
-				"<cmd>Trouble diagnostics toggle<cr>",
+				"<cmd>Trouble diagnostics focus=true<cr>",
 				desc = "Diagnostics (Trouble)",
-			},
-			{
-				"<leader>xX",
-				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-				desc = "Buffer Diagnostics (Trouble)",
-			},
-			{
-				"<leader>cs",
-				"<cmd>Trouble symbols toggle focus=false<cr>",
-				desc = "Symbols (Trouble)",
-			},
-			{
-				"<leader>cl",
-				"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-				desc = "LSP Definitions / references / ... (Trouble)",
-			},
-			{
-				"<leader>xL",
-				"<cmd>Trouble loclist toggle<cr>",
-				desc = "Location List (Trouble)",
-			},
-			{
-				"<leader>xQ",
-				"<cmd>Trouble qflist toggle<cr>",
-				desc = "Quickfix List (Trouble)",
 			},
 		},
 	},
@@ -913,6 +889,31 @@ require("lazy").setup({
 		"catgoose/nvim-colorizer.lua",
 		event = "BufReadPre",
 		opts = { -- set to setup table
+		},
+	},
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+			{ "3rd/image.nvim", opts = {} },
+		},
+		lazy = false,
+		---@module "neo-tree"
+		---@type neotree.Config?
+		opts = {
+			window = {
+				position = "float",
+			},
+		},
+		keys = {
+			{
+				"<leader>nt",
+				"<cmd>Neotree float<cr>",
+				desc = "Toggle (NeoTree)",
+			},
 		},
 	},
 	--

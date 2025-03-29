@@ -15,6 +15,8 @@ if [[ $var ]] ; then
 
     else
         hyprctl dispatch movetoworkspacesilent "$active_workspace,class:com.jeffser.Alpaca"
+
+        hyprctl dispatch focuswindow "class:com.jeffser.Alpaca"
     fi
 
     sleep 0.5
