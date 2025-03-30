@@ -5,9 +5,9 @@
     "reload_style_on_change": true,
     "font": "Iansui, Fira Code",
 
-    "modules-left": ["clock", "custom/alpaca", "tray"],
+    "modules-left": ["clock", "custom/alpaca", "custom/btop", "tray"],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["custom/music", "custom/pacman", "custom/git", "memory","cpu","network","battery","pulseaudio"],
+    "modules-right": ["custom/git","custom/music","network","battery","pulseaudio"],
 
 
     "hyprland/workspaces": {
@@ -42,12 +42,11 @@
     "network": {
         "interval": 2,
         "format-wifi": "",
-        "format-ethernet":"<span color='#a5b1c2'>  </span>{bandwidthDownBytes}",
+        "format-ethernet":"<span color='#ffffff'>󰈀 </span>",
         "format-disconnected": "",
         "tooltip-format-disconnected": "Error",
         "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
         "tooltip-format-ethernet": "{ifname} 🖧 ",
-        "rotate": 270,
     }, 
     "battery": {
         "interval":30,
@@ -69,20 +68,9 @@
         "󰁹"
         ],
     },
-    "cpu": {
-        "format": "<span color='#26de81'>󰻠 </span>{usage}%",
-        "rotate": 270,
-        "tooltip": true
-    },
-    "memory": {
-        "format": "<span color='#4b7bec'> </span>  {used}", 
-        "rotate": 270
-    },
     "tray": { "icon-size": 14,
         "spacing": 10
     },
-
-
     "pulseaudio": {
         "format": "{icon}",
         "format-bluetooth": "{icon} {volume}%",
@@ -113,11 +101,11 @@
                 "return-type": "json",
                 "tooltip": true,
                 "rotate": 270,
-        },
+    },
     "custom/music": {
-            "format": "<span color='#fc5c65'> </span>",
+            "format": "<span color='#ffffff'>󰎆 </span>",
             "on-click": "~/DotFiles/ShellScripts/launchMusic.sh",
-            "tooltip": true,
+            "tooltip": false,
     },
     "custom/pacman": {
             "format": "{icon}",
@@ -133,6 +121,11 @@
     "custom/alpaca": {
             "format": " ",
             "on-click": "~/DotFiles/ShellScripts/launchAlpaca.sh",
-            "tooltip": true,
+            "tooltip": false,
+    },
+    "custom/btop": {
+            "format": " ",
+            "on-click": "~/DotFiles/ShellScripts/launchBtop.sh",
+            "tooltip": false,
     },
 } 
