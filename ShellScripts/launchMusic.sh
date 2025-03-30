@@ -15,6 +15,7 @@ if [[ $var ]] ; then
 
     else
         hyprctl dispatch movetoworkspacesilent "$active_workspace,class:com.github.th_ch.youtube_music"
+        hyprctl dispatch focuswindow "class:com.github.th_ch.youtube_music"
     fi
 
     sleep 0.5

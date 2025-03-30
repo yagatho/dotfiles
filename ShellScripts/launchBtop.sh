@@ -13,6 +13,7 @@ if [[ $var ]] ; then
 
     else
         hyprctl dispatch movetoworkspacesilent "$active_workspace,class:btop"
+        hyprctl dispatch focuswindow "class:btop"
     fi
 
     sleep 0.5
