@@ -1,13 +1,13 @@
 {
     "layer": "top",
     "position": "left",
-    "output": "eDP-1",
+    "output": "DP-2",
     "reload_style_on_change": true,
     "font": "Iansui, Fira Code",
 
     "modules-left": ["clock", "custom/alpaca", "custom/btop", "tray"],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["custom/git","custom/music","network","battery","pulseaudio"],
+    "modules-right": ["custom/git","custom/msgr","custom/music","network","battery","pulseaudio"],
 
 
     "hyprland/workspaces": {
@@ -128,5 +128,10 @@
             "format": " ",
             "on-click": "~/DotFiles/ShellScripts/launchBtop.sh",
             "tooltip": false,
+    },
+    "custom/msgr": {
+                    "format": "󰍡 ",
+                    "on-click": "~/DotFiles/ShellScripts/launchMsgr.sh",
+                    "tooltip": false,
     },
 } 
