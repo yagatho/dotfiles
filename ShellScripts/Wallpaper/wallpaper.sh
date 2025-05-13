@@ -50,7 +50,7 @@ else
 fi
 
 # Generate color schemes
-if ! hellwal -i "$WALLPAPER_PATH" --bright-offset 0.9; then
+if ! wal -i "$WALLPAPER_PATH"; then
     echo "Failed to generate hellwal color scheme."
     exit 1
 fi

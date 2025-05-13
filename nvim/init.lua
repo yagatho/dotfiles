@@ -760,7 +760,7 @@ require("lazy").setup({
 
 	-- [[ My plugins ]]
 	-- NOTE: Copilot
-	{
+	--[[{
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
 		build = ":Copilot auth",
@@ -783,6 +783,7 @@ require("lazy").setup({
 			},
 		},
 	},
+	]]
 	-- NOTE: Copilot chat
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
