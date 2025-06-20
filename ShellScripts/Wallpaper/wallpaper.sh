@@ -15,7 +15,7 @@ fi
 touch "$LOCK_FILE"
 
 # Find new and old wallpapers
-NEW_WALLPAPER=$(find "$HOME/Wallpaper" -type f \( -iname "*.jpg" -o -iname "*.png" \) | shuf -n 1)
+NEW_WALLPAPER=$(find "$HOME/Wallpaper" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" \) | shuf -n 1)
 OLD_WALLPAPER=$(find "$HOME/Wallpaper/Current" -type f \( -iname "*.jpg" -o -iname "*.png" \) | head -n 1)
 
 # Ensure Current directory exists
@@ -51,12 +51,9 @@ fi
 
 # Generate color schemes
 if ! wal -i "$WALLPAPER_PATH"; then
-    echo "Failed to generate hellwal color scheme."
+    echo "Failed to generate pywal color scheme."
     exit 1
 fi
-
-# Copy hellwal colors to wal cache
-cp "/home/yagatho/.cache/hellwal/colors.json" "/home/yagatho/.cache/wal"
 
 # Remove lock file
 rm -f "$LOCK_FILE"

@@ -1,82 +1,48 @@
-@import '/home/yagatho/.cache/hellwal/colors-waybar.css';
+@import '/home/yagatho/.cache/wal/colors-waybar.css';
 
-/* Whole site */
+
 * {
-	font-size: 15px;
-	font-family: Iansui;
-	padding-top: 3px;
-	padding-bottom: 3px;
-	border: none;
+    font-family: JetBrains Mono;
+    font-size: 17px;
+    padding: 0;
+    margin: 0;
 }
 
-
-
-/* Whole bar */
-window#waybar {
-	all: unset;
-	background-color: @background;
-}
-
-
-
-/* Modules */
-.modules-left {
-	border-radius: 10px;
-	box-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
-}
-
-.modules-center {
-	border-radius: 10px;
-	box-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
-}
-
-.modules-right {
-	border-radius: 10px;
-	box-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
-}
-
-
-
-/* Tooltip */
-tooltip {
-	background: @background;
-	color: @color7;
-}
-
-
-#pulseaudio {
-	padding: 0px 0px 0px 0px;
-	margin: 0px 0px 0px 0px;
-}
-
-
-/* Workspaces */
-#workspaces {
-	padding: 0px 5px;
+#waybar {
+    color: @foreground;
+    background-color: @background;
 }
 
 #workspaces button {
-	all: unset;
-	padding: 0px 5px;
-	color: alpha(@color9, .9);
-	transition: all .2s ease;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: @color2;
 }
 
-#workspaces button:hover {
-	color: rgba(0, 0, 0, 0);
-	border: none;
-	transition: all 1s ease;
+#workspaces button.empty {
+    color: @color8;
 }
 
 #workspaces button.active {
-	color: #fd9644;
-	border: none;
+    color: @color6;
+    border-radius: 3px;
 }
 
-/* Singular button */
-#custom-alpaca {
-	padding-top: 4px;
-	font-weight: bold;
-	text-shadow: 0px 0px 5px rgba(0, 0, 0, .5);
-	padding-bottom: 4px;
+#wireplumber,
+#bat,
+#tray,
+#usage,
+#net {
+    background-color: @background-alt;
+    border-radius: 3px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    margin-left: 0.3em;
+}
+
+#battery,
+#memory,
+#language,
+#network {
+    margin-right: 0.8em;
 }

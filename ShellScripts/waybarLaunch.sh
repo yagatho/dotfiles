@@ -1,3 +1,3 @@
 killall waybar
 
-waybar -c ~/DotFiles/Waybar/waybar.json -s ~/DotFiles/Waybar/style.css
+waybar -c ~/git/dotfiles/Waybar/waybar.json -s ~/git/dotfiles/Waybar/style.css
