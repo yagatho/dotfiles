@@ -1,0 +1,8 @@
+background-opacity = 1 
+
+# -- Keybinds
+keybind = ctrl+n=increase_font_size:1
+keybind = ctrl+m=decrease_font_size:1
+keybind = ctrl+t=new_tab
+keybind = super+enter=toggle_fullscreen
+keybind = ctrl+w=close_tab

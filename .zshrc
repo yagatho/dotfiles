@@ -3,6 +3,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # -- Exports
 export PATH=$PATH:$HOME/minio-binaries/
+export MANPAGER='nvim +Man!'
 
 # -- Settngs
 ZSH_THEME="robbyrussell"
