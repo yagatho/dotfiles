@@ -146,7 +146,7 @@ require("lazy").setup({
 
 			-- Document existing key chains
 			spec = {
-				{ "<leader>c", group = "[C]ode", mode = { "n", "x" } },
+				{ "<leader>c", group = "[C]ode",     mode = { "n", "x" } },
 				{ "<leader>d", group = "[D]ocument" },
 				{ "<leader>r", group = "[R]ename" },
 				{ "<leader>s", group = "[S]earch" },
@@ -175,7 +175,7 @@ require("lazy").setup({
 			},
 			{ "nvim-telescope/telescope-ui-select.nvim" },
 
-			{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
+			{ "nvim-tree/nvim-web-devicons",            enabled = vim.g.have_nerd_font },
 		},
 		config = function()
 			require("telescope").setup({
@@ -228,7 +228,7 @@ require("lazy").setup({
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 
-			{ "j-hui/fidget.nvim", opts = {} },
+			{ "j-hui/fidget.nvim",       opts = {} },
 			"hrsh7th/cmp-nvim-lsp",
 		},
 		config = function()
@@ -261,7 +261,7 @@ require("lazy").setup({
 					local client = vim.lsp.get_client_by_id(event.data.client_id)
 					if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
 						local highlight_augroup =
-							vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
+								vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
 						vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 							buffer = event.buf,
 							group = highlight_augroup,
@@ -304,32 +304,6 @@ require("lazy").setup({
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
-			local servers = {
-				clangd = {
-					on_attach = function(client, bufnr)
-						-- Wyłączenie formatowania przez clangd
-						client.server_capabilities.documentFormattingProvider = false
-					end,
-				},
-				pyright = {},
-				rust_analyzer = {},
-				roslyn = {},
-				lua_ls = {
-					settings = {
-						Lua = {
-							completion = {
-								callSnippet = "Replace",
-							},
-						},
-					},
-				},
-			}
-
-			local ensure_installed = vim.tbl_keys(servers or {})
-			vim.list_extend(ensure_installed, {
-				"stylua",
-			})
-			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 			require("mason").setup({
 				registries = {
@@ -337,21 +311,6 @@ require("lazy").setup({
 					"github:Crashdummyy/mason-registry",
 				},
 			})
-
-			require("mason-lspconfig").setup({
-				handlers = {
-					function(server_name)
-						local server = servers[server_name] or {}
-						-- This handles overriding only values explicitly passed
-						-- by the server configuration above. Useful when disabling
-						-- certain features of an LSP (for example, turning off formatting for ts_ls)
-						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-						require("lspconfig")[server_name].setup(server)
-					end,
-				},
-			})
-
-			-- My own lsp configs
 		end,
 	},
 	-- NOTE: Autoformat
@@ -648,45 +607,6 @@ require("lazy").setup({
 		"catgoose/nvim-colorizer.lua",
 		event = "BufReadPre",
 		opts = { -- set to setup table
-		},
-	},
-	-- NOTE: Neo Tree
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons",
-			"MunifTanjim/nui.nvim",
-			{ "3rd/image.nvim", opts = {} },
-		},
-		lazy = false,
-		---@module "neo-tree"
-		---@type neotree.Config?
-		opts = {
-			window = {
-				position = "float",
-			},
-		},
-		keys = {
-			{
-				"<leader>nt",
-				"<cmd>Neotree float<cr>",
-				desc = "Toggle (NeoTree)",
-			},
-		},
-	},
-	-- NOTE: Undo Tree
-	{
-		"jiaoshijie/undotree",
-		dependencies = "nvim-lua/plenary.nvim",
-		config = true,
-		keys = {
-			{
-				"<leader>u",
-				"<cmd>lua require('undotree').toggle()<cr>",
-				desc = "Toggle (UndoTree)",
-			},
 		},
 	},
 	-- NOTE: Roslyn
