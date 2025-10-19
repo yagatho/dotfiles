@@ -3,7 +3,7 @@
 # Install dependencies
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-sudo pacman -S wl-clipboard man tldr zsh git ttf-nerd-fonts-symbols-mono python dotnet-sdk btop
+sudo pacman -S wl-clipboard man tldr zsh git ttf-nerd-fonts-symbols-mono python dotnet-sdk btop nvim github-cli
 
 # Paru
 git clone https://aur.archlinux.org/paru.git
@@ -31,5 +31,4 @@ chsh -s /usr/bin/zsh
 
 # AUR
 paru -S wezterm-git
-paru -S github-cli
 
