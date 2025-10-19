@@ -1,10 +1,15 @@
 #!/bin/bash
 
-read -p "Install and compile paru? (Y/N): " confirm && [[ $confirm != [yY] ]] || exec ~/git/dotfiles/instalation/paru.sh
+read -p "Install and compile paru? (Y/N): " confirm && [[ $confirm != [yY] ]] || ~/git/dotfiles/instalation/paru.sh
 
-exec ~/git/dotfiles/instalation/dependencies.sh
+echo "Installing dependencies... "
+~/git/dotfiles/instalation/dependencies.sh
 
-read -p "Install zsh and plugins? (Y/N): " confirm && [[ $confirm != [yY] ]] || exec ~/git/dotfiles/instalation/zsh.sh
+read -p "Install zsh and plugins? (Y/N): " confirm && [[ $confirm != [yY] ]] || ~/git/dotfiles/instalation/zsh.sh
 
- exec ~/git/dotfiles/instalation/link.sh
+echo "Linking configs... "
+~/git/dotfiles/instalation/link.sh
+
+read -p "Configure git and github? (Y/N): " confirm && [[ $confirm != [yY] ]] || ~/git/dotfiles/instalation/git.sh
+
 
