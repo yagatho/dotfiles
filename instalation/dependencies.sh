@@ -6,6 +6,8 @@ sudo pacman -S wl-clipboard man tldr git ttf-nerd-fonts-symbols-mono python dotn
 # AUR
 read -p "Install wezterm? (May take long time)(Needs paru)(Y/N): " confirm && [[ $confirm != [yY] ]] || paru -S wezterm-git
 
+read -p "Install quickshell? (Needs paru)(Y/N): " confirm && [[ $confirm != [yY] ]] || paru -S quickshell
+
 read -p "Install tidal? (Needs paru)(Y/N): " confirm && [[ $confirm != [yY] ]] || paru -S tidal-hifi-bin
 
 read -p "Install unityhub? (Needs paru)(Y/N): " confirm && [[ $confirm != [yY] ]] || paru -S unityhub

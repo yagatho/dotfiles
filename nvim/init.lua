@@ -311,6 +311,7 @@ require("lazy").setup({
 					end,
 				},
 				rust_analyzer = {},
+				qmlls = {},
 				hyprls = {},
 				roslyn = {},
 				lua_ls = {
