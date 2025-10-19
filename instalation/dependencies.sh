@@ -1,6 +1,6 @@
 #!/bin/bash
 # Pacman
-sudo pacman -S wl-clipboard man tldr git ttf-nerd-fonts-symbols-mono python dotnet-sdk btop nvim github-cli qbittorrent discord firefox gimp
+sudo pacman -S wl-clipboard man tldr git ttf-nerd-fonts-symbols-mono python dotnet-sdk btop nvim github-cli qbittorrent discord firefox gimp go unzip
 
 
 # AUR
