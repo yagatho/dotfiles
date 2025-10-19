@@ -1,4 +1,5 @@
 #!/bin/bash
+sudo pacman -Syu
 
 read -p "Install and compile paru? (Y/N): " confirm && [[ $confirm != [yY] ]] || ~/git/dotfiles/instalation/paru.sh
 
