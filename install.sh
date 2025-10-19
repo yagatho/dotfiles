@@ -13,4 +13,4 @@ echo "Linking configs... "
 
 read -p "Configure git and github? (Y/N): " confirm && [[ $confirm != [yY] ]] || ~/git/dotfiles/instalation/git.sh
 
-
+read -p "Install hyprland plugins? (Y/N): " confirm && [[ $confirm != [yY] ]] || ~/git/dotfiles/instalation/hyprplugins.sh
